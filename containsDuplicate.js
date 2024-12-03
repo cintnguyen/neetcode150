@@ -14,7 +14,30 @@
 // Output: false
 
 
-// O(n²) performance
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @return {boolean}
+     */
+    hasDuplicate(nums) {
+        const checked = new Set()
+        for (const num of nums){
+            if (checked.has(num)){
+                return true
+            }
+            checked.add(num)
+        }
+        return false
+    }
+}
+
+// O(n) performance
+// Single Iteration:Solution loops through the array once (at most), so the iteration is O(n).
+// Constant-Time Operations: Set.has() and Set.add() are O(1) on average, meaning these operations do not increase the complexity significantly.
+// No Nested Loops: Solution avoid nested loops or redundant checks, which keeps them linear in performance.
+
+
+
 class Solution {
     /**
      * @param {number[]} nums
@@ -31,3 +54,10 @@ class Solution {
         return false
     }
 }
+
+// O(n²) performance
+// Original approach using splice and includes had a time complexity of O(n²). Here's why:
+// The outer loop iterates through the array O(n) times.
+// Inside the loop, includes performs a linear search over the remaining elements of the array, which is O(n) in the worst case.
+// Combining these gives a total time complexity of O(n) * O(n) = O(n²).
+
